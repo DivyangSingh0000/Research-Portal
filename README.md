@@ -1,11 +1,6 @@
-# 🎓 ResearchPortal — AI Research Assistant for Students & Scholars
+# 🎓 ResearchPortal - AI Research Assistant for Students & Scholars
 
 > **Demystifying complex academic papers in seconds.** Designed for university students, graduate researchers, and curious minds to accelerate literature reviews, exam preparation, and thesis writing.
-
-[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Node.js](https://img.shields.io/badge/Node.js-18+-43853D?style=flat&logo=node.js&logoColor=white)](https://nodejs.org/)
-[![Gemini](https://img.shields.io/badge/Gemini_3.6_Flash-8E75B2?style=flat&logo=google&logoColor=white)](https://ai.google.dev/)
-[![Express](https://img.shields.io/badge/Express-4.x-000000?style=flat&logo=express&logoColor=white)](https://expressjs.com/)
 
 ---
 
@@ -13,10 +8,10 @@
 
 Reading 30+ page academic papers with dense mathematical formulas, complex methodology, and academic jargon is exhausting. **ResearchPortal** transforms that experience:
 
-- ⚡ **5x Faster Literature Reviews**: Extract structure, key findings, and methodologies automatically.
-- 💡 **"Explain in Simple Terms"**: Translate heavy mathematical proofs and algorithmic concepts into intuitive real-world analogies.
-- 🎯 **Grounded Q&A (Zero Hallucinations)**: Vector-indexed retrieval guarantees that all answers come directly from your uploaded manuscript.
-- 📚 **Thesis, Seminar & Viva Ready**: Ask targeted questions on baseline comparisons, dataset nuances, and study limitations.
+-  **5x Faster Literature Reviews**: Extract structure, key findings, and methodologies automatically.
+-  **"Explain in Simple Terms"**: Translate heavy mathematical proofs and algorithmic concepts into intuitive real-world analogies.
+-  **Grounded Q&A (Zero Hallucinations)**: Vector-indexed retrieval guarantees that all answers come directly from your uploaded manuscript.
+-  **Thesis, Seminar & Viva Ready**: Ask targeted questions on baseline comparisons, dataset nuances, and study limitations.
 
 ---
 
@@ -24,11 +19,11 @@ Reading 30+ page academic papers with dense mathematical formulas, complex metho
 
 | Feature | Description |
 | :--- | :--- |
-| **📄 Smart PDF Ingestion** | Drag-and-drop support for ArXiv, IEEE, ACM, Springer, Nature, and university thesis papers (up to 50MB). |
-| **📑 Section Detection & Mapping** | Automatically detects and organizes paper sections (Abstract, Methodology, Experiments, Ablation, Discussion). |
-| **🧠 Multi-Tier Synthesis** | Generates executive summaries, key takeaways, and a dedicated **Student & Layman Explanation**. |
-| **💬 Interactive Academic Tutor** | RAG-powered chat grounded in the paper context with one-click prompts for methodologies, datasets, and limitations. |
-| **📊 Visual Study Analytics** | Real-time visual metrics for keyword distribution, section flow, and document reading times. |
+| ** Smart PDF Ingestion** | Drag-and-drop support for ArXiv, IEEE, ACM, Springer, Nature, and university thesis papers (up to 50MB). |
+| ** Section Detection & Mapping** | Automatically detects and organizes paper sections (Abstract, Methodology, Experiments, Ablation, Discussion). |
+| ** Multi-Tier Synthesis** | Generates executive summaries, key takeaways, and a dedicated **Student & Layman Explanation**. |
+| ** Interactive Academic Tutor** | RAG-powered chat grounded in the paper context with one-click prompts for methodologies, datasets, and limitations. |
+| ** Visual Study Analytics** | Real-time visual metrics for keyword distribution, section flow, and document reading times. |
 
 ---
 
