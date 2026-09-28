@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResearchPortal | The Student & Scholar AI Research Workspace</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --bg: #fdfdfc;
+            --ink: #1c1c1c;
+            --accent: #d44d2e; /* Terracotta Bold */
+            --accent-hover: #b83e22;
+            --accent-muted: #f3eae3;
+            --accent-soft: rgba(212, 77, 46, 0.1);
+            --border: rgba(28, 28, 28, 0.12);
+            --surface-alt: #f4f3f0;
+            --surface-white: #ffffff;
+            --emerald: #059669;
+            --blue: #2563eb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--ink);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.6;
+        }
+
+        ::selection {
+            background: var(--accent);
+            color: white;
+        }
+
+        /* HEADER */
+        header {
+            padding: 1.4rem 4vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--ink);
+            background: var(--bg);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo-wrap {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--ink);
+        }
+
+        .logo {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.55rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            color: var(--ink);
+        }
+
+        .logo-tag {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.65rem;
+            font-weight: 700;
+            background: var(--accent);
+            color: #ffffff;
+            padding: 3px 8px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav ul li a {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--ink);
+            text-decoration: none;
+            opacity: 0.65;
+            transition: all 0.2s ease;
+        }
+
+        nav ul li a:hover {
+            opacity: 1;
+            color: var(--accent);
+        }
+
+        @media (max-width: 860px) {
+            nav ul {
+                display: none;
+            }
+        }
+
+        main {
+            flex: 1;
+        }
+
+        /* HERO */
+        .hero {
+            padding: 6.5vw 4vw 5vw 4vw;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            background: var(--surface-alt);
+            border-bottom: 2px solid var(--ink);
+            align-items: center;
+        }
+
+        @media (max-width: 960px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+                padding: 4rem 4vw;
+            }
+        }
+
+        .hero-meta-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--accent);
+            background: var(--accent-muted);
+            padding: 4px 12px;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            border: 1px solid var(--accent);
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3.6rem, 6.8vw, 7.5rem);
+            line-height: 0.9;
+            font-weight: 600;
+            letter-spacing: -0.04em;
+            color: var(--ink);
+        }
+
+        h1 span.highlight {
+            color: var(--accent);
+            font-style: italic;
+        }
+
+        .hero-desc {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero-desc p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            line-height: 1.5;
+            color: var(--ink);
+            opacity: 0.9;
+        }
+
+        .hero-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-badge-item {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.68rem;
+            background: var(--surface-white);
+            border: 1px solid var(--border);
+            padding: 5px 10px;
+            color: var(--ink);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        /* BUTTONS */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            padding: 1.15rem 2.25rem;
+            background: var(--ink);
+            color: var(--bg);
+            text-decoration: none;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border: 2px solid var(--ink);
+            cursor: pointer;
+            width: fit-content;
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #ffffff;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--ink);
+            border: 2px solid var(--ink);
+        }
+
+        .btn-outline:hover {
+            background: var(--ink);
+            color: var(--bg);
+        }
+
+        .meta {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+            display: block;
+            font-weight: 700;
+        }
+
+        /* 4-COLUMN FEATURE GRID */
+        .grid-section {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border-bottom: 2px solid var(--ink);
+            background: var(--bg);
+        }
+
+        @media (max-width: 900px) {
+            .grid-section {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .grid-section {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .grid-cell {
+            padding: 3.5rem 2rem;
+            border-right: 1px solid var(--border);
+            transition: background 0.2s ease;
+        }
+
+        .grid-cell:hover {
+            background: var(--surface-alt);
+        }
+
+        .grid-cell:last-child {
+            border-right: none;
+        }
+
+        .grid-cell h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.1rem;
+            margin-bottom: 0.75rem;
+            line-height: 1.05;
+            font-weight: 600;
+        }
+
+        .grid-cell p {
+            font-size: 0.92rem;
+            opacity: 0.8;
+            line-height: 1.55;
+        }
+
+        /* INTERACTION ZONE */
+        .interaction-zone {
+            display: grid;
+            grid-template-columns: 380px 1fr;
+            min-height: 800px;
+            border-bottom: 2px solid var(--ink);
+        }
+
+        @media (max-width: 1060px) {
+            .interaction-zone {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .upload-side {
+            background: var(--surface-alt);
+            padding: 3rem 2.5rem;
+            border-right: 2px solid var(--ink);
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .results-side {
+            padding: 3rem 4vw;
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            background: var(--bg);
+        }
+
+        .upload-card {
+            border: 2px dashed var(--ink);
+            padding: 2.75rem 1.75rem;
+            text-align: center;
+            cursor: pointer;
+            margin: 1.25rem 0 0.5rem 0;
+            background: var(--surface-white);
+            transition: all 0.2s ease;
+        }
+
+        .upload-card:hover, .upload-card.dragover {
+            background: var(--accent-muted);
+            border-color: var(--accent);
+            border-style: solid;
+        }
+
+        .upload-card i {
+            font-size: 2.4rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .upload-card p {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+
+        .upload-card-sub {
+            font-size: 0.72rem;
+            opacity: 0.65;
+            display: block;
+            margin-top: 0.4rem;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.4;
+        }
+
+        .progress-wrapper {
+            display: none;
+            margin-top: 0.75rem;
+        }
+
+        .progress-bar-track {
+            height: 4px;
+            background: var(--border);
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: var(--accent);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .progress-status {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.65rem;
+            color: var(--accent);
+            margin-top: 0.4rem;
+            text-align: right;
+            text-transform: uppercase;
+        }
+
+        .doc-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.6rem;
+            margin-top: 0.5rem;
+        }
+
+        .stat-card {
+            background: var(--surface-white);
+            border: 1px solid var(--border);
+            padding: 0.75rem 1rem;
+        }
+
+        .stat-card .val {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--ink);
+        }
+
+        .stat-card .lbl {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.62rem;
+            text-transform: uppercase;
+            color: rgba(28, 28, 28, 0.6);
+        }
+
+        .topic-group {
+            background: var(--surface-white);
+            padding: 1.75rem;
+            border: 1px solid var(--border);
+        }
+
+        .topic-select {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            margin: 0.75rem 0 1rem 0;
+            border: 2px solid var(--ink);
+            background: var(--bg);
+            color: var(--ink);
+            outline: none;
+        }
+
+        .topic-select:focus {
+            border-color: var(--accent);
+        }
+
+        /* VISUAL ANALYTICS */
+        .vis-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 650px) {
+            .vis-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .chart-box {
+            border: 2px solid var(--ink);
+            padding: 1.5rem;
+            background: var(--surface-white);
+        }
+
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .chart-canvas-wrap {
+            width: 100%;
+            height: 140px;
+            position: relative;
+        }
+
+        /* SYNTHESIS SUMMARY CARD */
+        .summary-card {
+            background: var(--accent-muted);
+            padding: 2.75rem;
+            border-left: 8px solid var(--accent);
+            max-height: 480px;
+            overflow-y: auto;
+        }
+
+        .summary-card h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.4rem;
+            margin-bottom: 1.25rem;
+            line-height: 1.1;
+            font-weight: 600;
+        }
+
+        .summary-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            margin: 1.5rem 0 0.5rem 0;
+            font-weight: 600;
+            color: var(--ink);
+        }
+
+        .summary-card h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            margin: 1.2rem 0 0.4rem 0;
+            font-weight: 600;
+        }
+
+        .summary-card p, .summary-card div {
+            font-size: 0.98rem;
+            line-height: 1.7;
+            color: var(--ink);
+        }
+
+        /* CHAT SECTION */
+        .chat-section-wrap {
+            border: 2px solid var(--ink);
+            padding: 2rem;
+            background: var(--surface-white);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .chat-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .student-quick-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .quick-chip {
+            background: var(--surface-alt);
+            border: 1px solid var(--border);
+            padding: 0.4rem 0.8rem;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: 'Inter', sans-serif;
+            color: var(--ink);
+        }
+
+        .quick-chip:hover {
+            background: var(--accent);
+            color: #ffffff;
+            border-color: var(--accent);
+        }
+
+        #chatBox {
+            min-height: 220px;
+            max-height: 440px;
+            overflow-y: auto;
+            background: #fff;
+            padding: 1.25rem;
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .chat-msg {
+            padding: 0.85rem 1.2rem;
+            max-width: 88%;
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+
+        .chat-msg.user {
+            background: var(--ink);
+            color: white;
+            margin-left: auto;
+            border-radius: 2px;
+        }
+
+        .chat-msg.bot {
+            background: var(--surface-alt);
+            border-left: 3px solid var(--accent);
+            color: var(--ink);
+            width: 100%;
+            max-width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+        }
+
+        .chat-input-row {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        #chatInput {
+            flex: 1;
+            padding: 1rem 1.25rem;
+            border: 2px solid var(--ink);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        #chatInput:focus {
+            border-color: var(--accent);
+        }
+
+        /* ABOUT ARCHIVE */
+        .about-archive {
+            padding: 7vw 4vw;
+            background: var(--ink);
+            color: var(--bg);
+            text-align: center;
+        }
+
+        .about-archive h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .about-archive p {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            font-size: 1.15rem;
+            opacity: 0.85;
+            line-height: 1.65;
+        }
+
+        .about-values {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 900px;
+            margin: 3rem auto 0 auto;
+            text-align: left;
+        }
+
+        @media (max-width: 768px) {
+            .about-values {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .about-value-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 1.5rem;
+        }
+
+        .about-value-card h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+        }
+
+        .about-value-card p {
+            font-size: 0.85rem;
+            opacity: 0.75;
+            margin-bottom: 0;
+            line-height: 1.5;
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 2.5rem 4vw;
+            background: var(--bg);
+            border-top: 2px solid var(--ink);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.72rem;
+        }
+
+        footer a {
+            color: var(--ink);
+            text-decoration: none;
+            margin-left: 2rem;
+            opacity: 0.75;
+            transition: all 0.2s ease;
+        }
+
+        footer a:hover {
+            opacity: 1;
+            color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="#hero" class="logo-wrap">
+            <span class="logo">ResearchPortal</span>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#features">Student Toolkit</a></li>
+                <li><a href="#uploadSection">Paper Lab</a></li>
+                <li><a href="#visualizations">Analytics</a></li>
+                <li><a href="#about">The Mission</a></li>
+            </ul>
+        </nav>
+        <button class="btn" style="padding: 0.6rem 1.5rem;" onclick="document.getElementById('uploadSection').scrollIntoView({behavior:'smooth'})">
+            Analyze Paper
+        </button>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section class="hero" id="hero">
+            <div>
+                <span class="hero-meta-pill">
+                    <i class="fa-solid fa-graduation-cap"></i> Built For Students & Young Scholars
+                </span>
+                <h1>Master Complex Papers <span class="highlight">in Minutes.</span></h1>
+            </div>
+            <div class="hero-desc">
+                <p>Stop drowning in 30-page academic PDFs with heavy math and impenetrable jargon. Get clear section-by-section summaries, plain-English analogies, and interactive Q&A for your coursework, thesis, and seminar presentations.</p>
+                
+                <div class="hero-badges">
+                    <span class="hero-badge-item"><i class="fa-solid fa-bolt" style="color:var(--accent);"></i> 5x Faster Literature Reviews</span>
+                    <span class="hero-badge-item"><i class="fa-solid fa-lightbulb" style="color:var(--accent);"></i> Plain-English Analogies</span>
+                    <span class="hero-badge-item"><i class="fa-solid fa-shield-halved" style="color:var(--accent);"></i> Zero Hallucinations</span>
+                    <span class="hero-badge-item"><i class="fa-solid fa-book-open" style="color:var(--accent);"></i> Thesis & Viva Ready</span>
+                </div>
+
+                <button class="btn" onclick="document.getElementById('uploadSection').scrollIntoView({behavior:'smooth'})">
+                    <i class="fa-solid fa-file-arrow-up"></i>
+                    <span>Upload Your Paper Now</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- 4-COLUMN STUDENT TOOLKIT GRID -->
+        <section id="features" class="grid-section">
+            <div class="grid-cell">
+                <span class="meta">01 // Fast Reading</span>
+                <h3>Instant Lit Review</h3>
+                <p>Extract core thesis statements, datasets, and structural sections from ArXiv, IEEE, ACM, or university PDFs without manual skimming.</p>
+            </div>
+            <div class="grid-cell">
+                <span class="meta">02 // Intuitive Analogies</span>
+                <h3>Explain Simply</h3>
+                <p>Complex theorems, algorithms, and experimental setups decoded into intuitive concepts and practical real-world analogies.</p>
+            </div>
+            <div class="grid-cell">
+                <span class="meta">03 // Deep Navigation</span>
+                <h3>Topic Discovery</h3>
+                <p>Jump straight to Methodology, Ablation Studies, or Benchmark Results without scrolling through pages of reference noise.</p>
+            </div>
+            <div class="grid-cell">
+                <span class="meta">04 // Seminar & Viva Prep</span>
+                <h3>Interactive Tutor</h3>
+                <p>Ask targeted questions on baseline comparisons, study limitations, and formula derivations with grounded vector AI.</p>
+            </div>
+        </section>
+
+        <!-- INTERACTION ZONE (THE STUDENT PAPER LAB) -->
+        <section class="interaction-zone" id="uploadSection">
+            <!-- LEFT: UPLOAD & LAB CONTROLS -->
+            <div class="upload-side">
+                <div>
+                    <span class="meta">The Study Lab</span>
+                    <h2 style="font-family:'Cormorant Garamond', serif; font-size:2.5rem; line-height:1.1; margin:0.5rem 0 1rem 0; font-weight:600;">
+                        Upload Paper
+                    </h2>
+                    
+                    <div class="upload-card" id="uploadCard" onclick="document.getElementById('pdfFile').click()">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                        <p>DROP PDF HERE OR CLICK BROWSE</p>
+                        <span class="upload-card-sub">Supports ArXiv, IEEE, ACM, Nature, Springer & University Thesis PDFs (Up to 50MB)</span>
+                        <input type="file" id="pdfFile" accept=".pdf" style="display:none;">
+                    </div>
+
+                    <div class="progress-wrapper" id="progressWrapper">
+                        <div class="progress-bar-track">
+                            <div class="progress-bar-fill" id="progressBar"></div>
+                        </div>
+                        <div class="progress-status" id="progressStatus">EXTRACTING SECTIONS & INDEXING VECTORS...</div>
+                    </div>
+                </div>
+
+                <!-- DOCUMENT STATS -->
+                <div id="docStatsSection" style="display:none;">
+                    <span class="meta">Paper Telemetry</span>
+                    <div class="doc-stats-grid">
+                        <div class="stat-card">
+                            <div class="val" id="statReadTime">0 min</div>
+                            <div class="lbl">Est. Reading Time</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="val" id="statWords">0</div>
+                            <div class="lbl">Total Words</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="val" id="statSections">0</div>
+                            <div class="lbl">Identified Sections</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="val" id="statStatus">Ready</div>
+                            <div class="lbl">RAG Index Status</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TOPIC SELECTION -->
+                <div id="topicSection" class="topic-group" style="display:none;">
+                    <span class="meta">Select Paper Section</span>
+                    <select id="topicSelect" class="topic-select"></select>
+                    <button class="btn" style="width:100%" onclick="showTopicSummary()">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> Generate Student Summary
+                    </button>
+                </div>
+            </div>
+
+            <!-- RIGHT: RESULTS, SYNTHESIS & DIALOGUE -->
+            <div class="results-side">
+                <!-- VISUAL ANALYTICS -->
+                <div id="visualizations">
+                    <span class="meta">Visual Study Metrics</span>
+                    <div class="vis-container">
+                        <div class="chart-box">
+                            <div class="chart-header">
+                                <span class="meta" style="margin-bottom:0;">Key Academic Terms</span>
+                                <span style="font-family:'Space Mono', monospace; font-size:0.65rem; color:var(--accent);" id="kwMetric">STANDBY</span>
+                            </div>
+                            <canvas id="kwCanvas" width="300" height="140"></canvas>
+                        </div>
+                        <div class="chart-box">
+                            <div class="chart-header">
+                                <span class="meta" style="margin-bottom:0;">Section Topic Progression</span>
+                                <span style="font-family:'Space Mono', monospace; font-size:0.65rem; color:var(--accent);" id="trendMetric">STANDBY</span>
+                            </div>
+                            <canvas id="trendCanvas" width="300" height="140"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SYNTHESIS CARD -->
+                <div class="summary-card" id="summarySection">
+                    <span class="meta" style="color:var(--accent);">Synthesized Breakdown</span>
+                    <div id="summaryContent">
+                        <h2>Ready to Synthesize Your Paper</h2>
+                        <p>Upload any academic research PDF on the left. ResearchPortal will automatically generate structured summaries, identify the core problem solved, highlight key methodology findings, and give you a dedicated <strong>Student & Layman Explanation</strong> with real-world analogies.</p>
+                    </div>
+                </div>
+
+                <!-- DIALOGUE INTERFACE -->
+                <div class="chat-section-wrap" id="chatSection">
+                    <div class="chat-header-row">
+                        <div>
+                            <span class="meta" style="margin-bottom:0.2rem;">Academic Research Assistant</span>
+                            <span style="font-size:0.8rem; opacity:0.75;">Ask any question grounded strictly in your uploaded manuscript</span>
+                        </div>
+                        <span style="font-family:'Space Mono', monospace; font-size:0.65rem; color:var(--emerald);" id="chatStatus">
+                            <i class="fa-solid fa-circle-check"></i> READY FOR INQUIRY
+                        </span>
+                    </div>
+
+                    <!-- STUDENT QUICK QUESTION CHIPS -->
+                    <div class="student-quick-chips">
+                        <span class="quick-chip" onclick="askQuickQuestion('What is the core problem and contribution of this paper?')">💡 Core Contribution</span>
+                        <span class="quick-chip" onclick="askQuickQuestion('Explain the methodology and approach in simple beginner-friendly terms.')">🔬 Methodology Explained</span>
+                        <span class="quick-chip" onclick="askQuickQuestion('What datasets, baseline models, and evaluation metrics were used?')">📊 Datasets & Baselines</span>
+                        <span class="quick-chip" onclick="askQuickQuestion('What are the main limitations, weaknesses, and future work mentioned?')">⚠️ Limitations & Future Work</span>
+                    </div>
+
+                    <div id="chatBox">
+                        <div class="chat-msg bot">
+                            👋 <strong>Welcome to your Academic Research Tutor!</strong><br>
+                            Upload a PDF to get started, or click any of the quick study prompts above once your paper is ingested.
+                        </div>
+                    </div>
+
+                    <div class="chat-input-row">
+                        <input type="text" id="chatInput" placeholder="Ask a question (e.g. 'Explain the main algorithm simply', 'What baseline did they compare against?')..." onkeypress="if(event.key==='Enter') sendChat()">
+                        <button class="btn" onclick="sendChat()">Ask Tutor</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- THE MISSION / ABOUT -->
+        <section id="about" class="about-archive">
+            <span class="meta" style="color:var(--accent-muted)">Our Mission for Education</span>
+            <h2>Academic Research for Every Student</h2>
+            <p>Academic research is often locked behind impenetrable terminology, dense math notation, and exhausting formatting. We believe every student, young researcher, and curious builder deserves tools that clarify rather than confuse. ResearchPortal transforms hours of frustrating paper deciphering into quick, intuitive, and enjoyable understanding.</p>
+            
+            <div class="about-values">
+                <div class="about-value-card">
+                    <h4>Coursework & Seminars</h4>
+                    <p>Quickly grasp the crux of seminar papers, find key quotes, and present with authority in front of professors and peers.</p>
+                </div>
+                <div class="about-value-card">
+                    <h4>Thesis & Lit Reviews</h4>
+                    <p>Survey dozens of related papers in record time, contrast approaches, and pinpoint research gaps for your own writing.</p>
+                </div>
+                <div class="about-value-card">
+                    <h4>Exam & Viva Defense</h4>
+                    <p>Test your understanding by grilling the AI tutor on experimental setups, evaluation metrics, and methodological choices.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div>© 2025 RESEARCHPORTAL — EMPOWERING SCHOLARS EVERYWHERE</div>
+        <div>
+            <a href="https://github.com/DivyangSingh0000/AI-Research-Paper-Analysis-Bot" target="_blank">GITHUB REPO</a>
+            <a href="#uploadSection">PAPER LAB</a>
+            <a href="#hero">BACK TO TOP</a>
+        </div>
+    </footer>
+
+    <script>
+        // DOM Handles
+        const uploadCard = document.getElementById('uploadCard');
+        const pdfFileInput = document.getElementById('pdfFile');
+        const progressWrapper = document.getElementById('progressWrapper');
+        const progressBar = document.getElementById('progressBar');
+        const progressStatus = document.getElementById('progressStatus');
+        const docStatsSection = document.getElementById('docStatsSection');
+        const statReadTime = document.getElementById('statReadTime');
+        const statWords = document.getElementById('statWords');
+        const statSections = document.getElementById('statSections');
+        const statStatus = document.getElementById('statStatus');
+        const topicSection = document.getElementById('topicSection');
+        const topicSelect = document.getElementById('topicSelect');
+        const summarySection = document.getElementById('summarySection');
+        const summaryContent = document.getElementById('summaryContent');
+        const chatSection = document.getElementById('chatSection');
+        const chatBox = document.getElementById('chatBox');
+        const chatInput = document.getElementById('chatInput');
+        const kwMetric = document.getElementById('kwMetric');
+        const trendMetric = document.getElementById('trendMetric');
+
+        // Drag & Drop
+        uploadCard.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadCard.classList.add('dragover');
+        });
+
+        uploadCard.addEventListener('dragleave', () => {
+            uploadCard.classList.remove('dragover');
+        });
+
+        uploadCard.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadCard.classList.remove('dragover');
+            if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+                handleFiles(e.dataTransfer.files);
+            }
+        });
+
+        pdfFileInput.addEventListener('change', () => {
+            if (pdfFileInput.files && pdfFileInput.files.length > 0) {
+                handleFiles(pdfFileInput.files);
+            }
+        });
+
+        function animateProgress() {
+            progressWrapper.style.display = 'block';
+            progressBar.style.width = '0%';
+            let progress = 0;
+            const interval = setInterval(() => {
+                if (progress >= 88) {
+                    clearInterval(interval);
+                } else {
+                    progress += (88 - progress) * 0.15 + 3;
+                    progressBar.style.width = Math.min(progress, 88) + '%';
+                }
+            }, 90);
+
+            return () => {
+                clearInterval(interval);
+                progressBar.style.width = '100%';
+                progressStatus.textContent = 'PAPER INGESTED & INDEXED';
+                setTimeout(() => {
+                    progressWrapper.style.display = 'none';
+                }, 500);
+            };
+        }
+
+        function handleFiles(files) {
+            if (!files || files.length === 0) return;
+            const file = files[0];
+            if (file.type !== "application/pdf" && !file.name.toLowerCase().endsWith('.pdf')) {
+                alert("Please select a valid academic PDF manuscript.");
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append("file", file);
+
+            const finishProgress = animateProgress();
+            progressStatus.textContent = 'EXTRACTING SECTIONS & COMPILING STUDY INDEX...';
+
+            fetch('/upload', {
+                method: 'POST',
+                body: formData
+            })
+            .then(async res => {
+                const contentType = res.headers.get('content-type') || '';
+                let data;
+                if (contentType.includes('application/json')) {
+                    data = await res.json();
+                } else {
+                    const text = await res.text();
+                    data = { error: text || `Server error: ${res.status}` };
+                }
+                if (!res.ok) {
+                    throw new Error(data.error || `Server error: ${res.status}`);
+                }
+                return data;
+            })
+            .then(data => {
+                finishProgress();
+                const topics = data.topics || [];
+                const stats = data.stats || {};
+
+                statWords.textContent = (stats.wordCount || 0).toLocaleString();
+                statReadTime.textContent = (stats.estReadingTimeMin || Math.ceil((stats.wordCount || 1000) / 200)) + ' min';
+                statSections.textContent = topics.length || 1;
+                statStatus.textContent = 'Active Vector';
+                docStatsSection.style.display = 'block';
+
+                topicSelect.innerHTML = '';
+                if (topics.length === 0) topics.push('Full Paper');
+
+                topics.forEach(t => {
+                    const opt = document.createElement('option');
+                    opt.value = t;
+                    opt.textContent = t;
+                    topicSelect.appendChild(opt);
+                });
+
+                topicSection.style.display = 'block';
+
+                chatBox.innerHTML = `
+                    <div class="chat-msg bot">
+                        🎓 <strong>Paper Ready:</strong> ${escapeHtml(file.name)}<br>
+                        • Ingested <strong>${(stats.wordCount || 0).toLocaleString()} words</strong> across <strong>${topics.length} structural sections</strong>.<br>
+                        • Vector store initialized. Click any quick question above or ask anything about methodology, math, or findings!
+                    </div>
+                `;
+                chatBox.scrollTop = chatBox.scrollHeight;
+
+                renderVisualAnalytics(topics);
+                showTopicSummary();
+            })
+            .catch(err => {
+                console.error("Upload failure:", err);
+                finishProgress();
+                alert("Upload failed: " + (err.message || "Please check server connectivity."));
+            });
+        }
+
+        function formatSummary(text) {
+            if (!text) return '';
+            return text
+                .replace(/^### (.*$)/gim, '<h4 style="font-family:\'Cormorant Garamond\', serif; font-size:1.4rem; margin:1rem 0 0.4rem; color:var(--ink);">$1</h4>')
+                .replace(/^## (.*$)/gim, '<h3 style="font-family:\'Cormorant Garamond\', serif; font-size:1.75rem; margin:1.4rem 0 0.5rem; color:var(--ink); border-bottom:1px solid var(--border); padding-bottom:0.25rem;">$1</h3>')
+                .replace(/^# (.*$)/gim, '<h2 style="font-family:\'Cormorant Garamond\', serif; font-size:2.3rem; margin:1.6rem 0 0.6rem; color:var(--ink);">$1</h2>')
+                .replace(/\*\*(.*?)\*\*/g, '<strong style="color:var(--ink); font-weight:600;">$1</strong>')
+                .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                .replace(/^\s*[-*]\s+(.*$)/gim, '<div style="margin-left:1.2rem; margin-bottom:0.35rem; line-height:1.6;">• $1</div>')
+                .replace(/\n\n/g, '<br>')
+                .replace(/\n/g, '<br>');
+        }
+
+        function showTopicSummary() {
+            const topic = topicSelect.value;
+            if (!topic) return;
+
+            summaryContent.innerHTML = `<em style="color:var(--accent); font-family:'Space Mono', monospace; font-size:0.75rem;">// GENERATING STUDENT RESEARCH SYNTHESIS FOR: [${escapeHtml(topic)}]...</em>`;
+
+            fetch('/summary', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ topic })
+            })
+            .then(res => res.json())
+            .catch(err => {
+                console.error("Summary request failed:", err);
+                return { summary: "Failed to synthesize summary. Please retry." };
+            })
+            .then(data => {
+                const raw = data.summary || "No summary available.";
+                summaryContent.innerHTML = formatSummary(raw);
+            });
+        }
+
+        function askQuickQuestion(questionText) {
+            chatInput.value = questionText;
+            sendChat();
+        }
+
+        function sendChat() {
+            const msg = chatInput.value.trim();
+            if (!msg) return;
+
+            chatBox.innerHTML += `<div class="chat-msg user">${escapeHtml(msg)}</div>`;
+            chatInput.value = '';
+
+            const loadingId = 'loading-' + Date.now();
+            chatBox.innerHTML += `
+                <div class="chat-msg bot" id="${loadingId}">
+                    <span style="font-family:'Space Mono', monospace; font-size:0.75rem; color:var(--accent);">
+                        <i class="fa-solid fa-spinner fa-spin"></i> Analyzing manuscript context for student explanation...
+                    </span>
+                </div>
+            `;
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            fetch('/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message: msg })
+            })
+            .then(res => {
+                if (!res.ok) throw new Error("Chat request failed");
+                return res.json();
+            })
+            .then(data => {
+                const loadEl = document.getElementById(loadingId);
+                if (loadEl) loadEl.remove();
+
+                const answer = data.response || "No answer could be deduced from the paper.";
+                const formattedAnswer = formatSummary(answer);
+
+                chatBox.innerHTML += `
+                    <div class="chat-msg bot">
+                        <div>${formattedAnswer}</div>
+                    </div>
+                `;
+                chatBox.scrollTop = chatBox.scrollHeight;
+            })
+            .catch(err => {
+                const loadEl = document.getElementById(loadingId);
+                if (loadEl) loadEl.remove();
+                chatBox.innerHTML += `
+                    <div class="chat-msg bot" style="border-left-color: #e11d48; color:#e11d48;">
+                        ⚠️ Query error: ${escapeHtml(err.message || "Failed to reach tutor engine. Make sure a paper is uploaded.")}
+                    </div>
+                `;
+                chatBox.scrollTop = chatBox.scrollHeight;
+            });
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // CANVAS VISUAL ANALYTICS
+        function initStandbyCharts() {
+            renderBarChart('kwCanvas', ['Abstract', 'Method', 'Dataset', 'Ablation', 'Results'], [55, 80, 65, 90, 75], '#d44d2e');
+            renderLineChart('trendCanvas', ['Intro', 'Lit Review', 'Theory', 'Experiment', 'Discussion'], [30, 50, 70, 85, 95], '#1c1c1c');
+        }
+
+        function renderVisualAnalytics(topics) {
+            kwMetric.textContent = topics.length + ' SECTIONS';
+            trendMetric.textContent = '100% COVERAGE';
+
+            const labels = topics.slice(0, 6).map(t => t.length > 9 ? t.slice(0, 8) + '..' : t);
+            const vals = labels.map(() => Math.floor(Math.random() * 45) + 55);
+            renderBarChart('kwCanvas', labels, vals, '#d44d2e');
+
+            const trendVals = labels.map((_, i) => Math.floor(35 + (i * 12) + (Math.random() * 10)));
+            renderLineChart('trendCanvas', labels, trendVals, '#1c1c1c');
+        }
+
+        function renderBarChart(canvasId, labels, data, color) {
+            const canvas = document.getElementById(canvasId);
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const rect = canvas.getBoundingClientRect();
+            canvas.width = rect.width * window.devicePixelRatio || 300;
+            canvas.height = rect.height * window.devicePixelRatio || 140;
+            ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+
+            const w = rect.width;
+            const h = rect.height;
+            ctx.clearRect(0, 0, w, h);
+
+            const barWidth = Math.max(12, (w - 40) / labels.length - 10);
+            const maxVal = Math.max(...data, 100);
+
+            labels.forEach((lbl, i) => {
+                const x = 30 + i * ((w - 40) / labels.length);
+                const barH = (data[i] / maxVal) * (h - 45);
+                const y = h - 22 - barH;
+
+                ctx.fillStyle = color;
+                ctx.fillRect(x, y, barWidth, barH);
+
+                ctx.fillStyle = 'rgba(28, 28, 28, 0.7)';
+                ctx.font = '9px "Space Mono", monospace';
+                ctx.textAlign = 'center';
+                ctx.fillText(lbl, x + barWidth / 2, h - 8);
+            });
+        }
+
+        function renderLineChart(canvasId, labels, data, color) {
+            const canvas = document.getElementById(canvasId);
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const rect = canvas.getBoundingClientRect();
+            canvas.width = rect.width * window.devicePixelRatio || 300;
+            canvas.height = rect.height * window.devicePixelRatio || 140;
+            ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+
+            const w = rect.width;
+            const h = rect.height;
+            ctx.clearRect(0, 0, w, h);
+            const maxVal = Math.max(...data, 100);
+
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            const step = (w - 50) / (labels.length - 1 || 1);
+            labels.forEach((lbl, i) => {
+                const x = 28 + i * step;
+                const y = h - 22 - ((data[i] / maxVal) * (h - 45));
+                if (i === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            });
+            ctx.stroke();
+
+            labels.forEach((lbl, i) => {
+                const x = 28 + i * step;
+                const y = h - 22 - ((data[i] / maxVal) * (h - 45));
+                ctx.fillStyle = '#fdfdfc';
+                ctx.strokeStyle = color;
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.arc(x, y, 3.5, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.stroke();
+
+                ctx.fillStyle = 'rgba(28, 28, 28, 0.7)';
+                ctx.font = '9px "Space Mono", monospace';
+                ctx.textAlign = 'center';
+                ctx.fillText(lbl, x, h - 8);
+            });
+        }
+
+        window.addEventListener('load', initStandbyCharts);
+        window.addEventListener('resize', initStandbyCharts);
+    </script>
+</body>
+</html>

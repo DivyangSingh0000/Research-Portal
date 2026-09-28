@@ -1,0 +1,8 @@
+{
+  "name": "Research Paper Analyzer",
+  "description": "Student and scholar AI research workspace to upload papers, extract sections, generate intuitive layman-friendly summaries, and chat with grounded academic manuscripts.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
