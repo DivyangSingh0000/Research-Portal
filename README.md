@@ -19,11 +19,11 @@ Reading 30+ page academic papers with dense mathematical formulas, complex metho
 
 | Feature | Description |
 | :--- | :--- |
-| ** Smart PDF Ingestion** | Drag-and-drop support for ArXiv, IEEE, ACM, Springer, Nature, and university thesis papers (up to 50MB). |
-| ** Section Detection & Mapping** | Automatically detects and organizes paper sections (Abstract, Methodology, Experiments, Ablation, Discussion). |
-| ** Multi-Tier Synthesis** | Generates executive summaries, key takeaways, and a dedicated **Student & Layman Explanation**. |
-| ** Interactive Academic Tutor** | RAG-powered chat grounded in the paper context with one-click prompts for methodologies, datasets, and limitations. |
-| ** Visual Study Analytics** | Real-time visual metrics for keyword distribution, section flow, and document reading times. |
+| **Smart PDF Ingestion** | Drag-and-drop support for ArXiv, IEEE, ACM, Springer, Nature, and university thesis papers (up to 50MB). |
+| **Section Detection & Mapping** | Automatically detects and organizes paper sections (Abstract, Methodology, Experiments, Ablation, Discussion). |
+| **Multi-Tier Synthesis** | Generates executive summaries, key takeaways, and a dedicated **Student & Layman Explanation**. |
+| **Interactive Academic Tutor** | RAG-powered chat grounded in the paper context with one-click prompts for methodologies, datasets, and limitations. |
+| **Visual Study Analytics** | Real-time visual metrics for keyword distribution, section flow, and document reading times. |
 
 ---
 
